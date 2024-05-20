@@ -40,7 +40,7 @@ namespace WeatherApi.Services
                 }
                 else
                 {
-                    throw new Exception($"API call failed: {response.ReasonPhrase}");                    
+                    return null;              
                 }
             }
         } 

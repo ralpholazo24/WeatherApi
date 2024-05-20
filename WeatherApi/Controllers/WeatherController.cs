@@ -20,15 +20,15 @@ namespace WeatherApi.Controllers
         [HttpGet(Name = "weather")]
         public async Task<IActionResult> Get(string city)
         {
-            var weatherDataList = await _weatherService.GetWeather(city);
-
-            if (weatherDataList == null)
+            try
+            {
+                var weatherDataList = await _weatherService.GetWeather(city);
+                return Ok(weatherDataList);
+            }
+            catch (Exception ex)
             {
                 return BadRequest("Error retrieving weather data.");
             }
-
-            return Ok(weatherDataList);
-
         }
     }
 }
